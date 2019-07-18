@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <style>
+            a{
+                color: #279cee;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li><a onclick="go('/yellow')">yellow</a></li>
+            <li><a onclick="go('/blue')">blue</a></li>
+            <li><a onclick="go('/orange')">orange</a></li>
+        </ul>
+    </body>
+    <script src="./myRouter.js"></script>
+    <script>
+        let route = new Router()
+        route.init()
+        route.push('/yellow', callback('yellow'))
+        route.push('/blue', callback('blue'))
+        route.push('/orange', callback('orange'))
+        function go(s){
+            route.go(s)
+        }
+        function callback(color){
+            let c = color
+            return function(){
+                console.log(c)
+                document.body.style.backgroundColor = c
+            }
+        }
+    </script>
+</html>
